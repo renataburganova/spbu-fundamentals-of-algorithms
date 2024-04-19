@@ -1,3 +1,5 @@
+import os
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -55,3 +57,9 @@ if __name__ == "__main__":
             print(f"Graph {filename} has cycles: NO")
         else:
             print(f"Graph {filename} has cycles: YES")
+        # Load the graph
+        G = nx.read_edgelist(
+            os.path.join("practicum_2", "homework", filename), create_using=nx.Graph
+        )
+        # Output whether it has cycles
+        print(f"Graph {filename} has cycles: {has_cycles_dfs_algorithm(G)}")
